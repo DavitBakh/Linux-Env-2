@@ -1,5 +1,6 @@
 #include <algorithm>
 #include "sort.h"
+#include "complex.h"
 
 void sort(Complex* arr, int size)
 {

@@ -1,16 +1,19 @@
+CC=g++
+CGFLAGS=-c
+
 all: program
 
 program: main.o complex.o sort.o
-	g++ main.o complex.o sort.o -o program
+	$(CC) $^ -o $@
 
 main.o: main.cpp complex.h sort.h
-	g++ -c main.cpp -o main.o
+	$(CC) $(CGFLAGS) $< -o $@
 
-complex.o: complex.cpp
-	g++ -c complex.cpp -o complex.o
+complex.o: complex.cpp complex.h
+	$(CC) $(CGFLAGS) $< -o $@
 
-sort.o: sort.cpp
-	g++ -c sort.cpp -o sort.o
+sort.o: sort.cpp sort.h complex.h
+	$(CC) $(CGFLAGS) $< -o $@
 
 clean:
 	rm -rf *.o program
